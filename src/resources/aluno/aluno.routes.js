@@ -2,7 +2,7 @@ import express from "express";
 import {
   getAllAluno,
   getSingleAluno,
-} from "./notes.controllers.js";
+} from "./aluno.controllers.js";
 
 const router = express.Router();
 
