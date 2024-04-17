@@ -1,4 +1,4 @@
- import { pool } from "../../db/connect.js";
+import { pool } from "../../db/connect.js";
 import { createCustomError } from "../../errors/customErrors.js";
 import { tryCatchWrapper } from "../../middlewares/tryCatchWrapper.js";
 
@@ -6,7 +6,7 @@ import { tryCatchWrapper } from "../../middlewares/tryCatchWrapper.js";
  * @returns Aluno object
  */
 async function getAluno(id) {
-  let sql = "SELECT * FROM Aluno WHERE ALUNO = ?";
+  let sql = "SELECT * FROM Aluno WHERE ALUNO_ID = ?";
   const [rows] = await pool.query(sql, [id]);
   return rows[0];
 }
