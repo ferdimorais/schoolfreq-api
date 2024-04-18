@@ -5,6 +5,7 @@ import { handleError } from "./src/middlewares/handleError.js";
 import alunoRoute from "./src/resources/aluno/aluno.routes.js";
 import faltaRoute from "./src/resources/falta/faltas.routes.js";
 import disciplinaRoute from "./src/resources/disciplina/disciplina.routes.js";
+import turmaRoute from "./src/resources/turma/turma.routes.js";
 dotenv.config();
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/aluno", alunoRoute);
 app.use("/falta", faltaRoute);
 app.use("/disciplina", disciplinaRoute);
+app.use("/turma", turmaRoute);
 
 app.use(notFound);
 app.use(handleError);
