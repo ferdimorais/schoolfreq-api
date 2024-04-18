@@ -6,7 +6,7 @@ import { tryCatchWrapper } from "../../middlewares/tryCatchWrapper.js";
  * @returns Disciplina object
  */
 async function getDisciplina(id) {
-  let sql = "SELECT * FROM Disciplina WHERE DISCIPLINA = ?";
+  let sql = "SELECT DISCIPLINA,	NOME, ATIVA FROM Disciplina WHERE DISCIPLINA = ?";
   const [rows] = await pool.query(sql, [id]);
   return rows[0];
 }
@@ -16,7 +16,7 @@ async function getDisciplina(id) {
  * @route GET /Disciplina
  */
 export const getAllDisciplina = tryCatchWrapper(async function (req, res, next) {
-  let sql = "SELECT * from Disciplina";
+  let sql = "SELECT DISCIPLINA,	NOME, ATIVA from Disciplina";
   const [rows] = await pool.query(sql);
   if (!rows.length) return res.status(204).json({ message: "Não foram encontrados resultados" });
 
