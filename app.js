@@ -1,10 +1,10 @@
 import express from "express";
 import dotenv from "dotenv";
-import { notFound }     from "./src/middlewares/notFound.js";
-import { handleError }  from "./src/middlewares/handleError.js";
-import alunoRoute       from "./src/resources/aluno/aluno.routes.js";
-import faltaRoute       from "./src/resources/falta/faltas.routes.js";
-import disciplinaRoute  from "./src/resources/disciplina/disciplina.routes.js";
+import { notFound } from "./src/middlewares/notFound.js";
+import { handleError } from "./src/middlewares/handleError.js";
+import alunoRoute from "./src/resources/aluno/aluno.routes.js";
+import faltaRoute from "./src/resources/falta/faltas.routes.js";
+import disciplinaRoute from "./src/resources/disciplina/disciplina.routes.js";
 dotenv.config();
 
 const app = express();
