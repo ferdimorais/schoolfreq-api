@@ -10,9 +10,6 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-//pagination
-const mongoosePaginate = require('mongoose-paginate');
-
 //middleware
 app.use(express.json());
 
