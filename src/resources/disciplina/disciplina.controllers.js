@@ -16,7 +16,7 @@ async function getDisciplina(id) {
  * @route GET /Disciplina
  */
 export const getAllDisciplina = tryCatchWrapper(async function (req, res, next) {
-  let sql = "SELECT DISCIPLINA,	NOME, ATIVA from Disciplina";
+  let sql = "SELECT DISCIPLINA,	NOME from Disciplina WHERE ATIVA = 'S'";
   const [rows] = await pool.query(sql);
   if (!rows.length) return res.status(204).json({ message: "Não foram encontrados resultados" });
 
