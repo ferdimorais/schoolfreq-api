@@ -16,7 +16,7 @@ async function getAluno(id) {
  * @route GET /Aluno
  */
 export const getAllAluno = tryCatchWrapper(async function (req, res, next) {
-  let sql = "SELECT * from Aluno LIMIT 100";
+  let sql = "SELECT * from Aluno";
   const [rows] = await pool.query(sql);
   if (!rows.length) return res.status(204).json({ message: "Não foram encontrados resultados" });
 
