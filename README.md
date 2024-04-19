@@ -10,3 +10,9 @@ Para testar:
 Para executar:
 - sudo npm i pm2 -g
 - pm2 start app.js
+
+Para atualizar:
+- cd /var/www/html/schoolfreq-api
+- git pull (senha 1234)
+- npm install
+- pm2 restart app.js
