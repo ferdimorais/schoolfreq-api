@@ -13,10 +13,22 @@ async function getDisciplina(id) {
 
 /**
  * @description Get All Disciplina
- * @route GET /Disciplina
+ * @route GET /disciplina
  */
 export const getAllDisciplina = tryCatchWrapper(async function (req, res, next) {
-  let sql = "SELECT DISCIPLINA,	NOME from Disciplina WHERE ATIVA = 'S'";
+  let sql = "SELECT DISCIPLINA,	NOME, CASE WHEN ATIVA = 'S' THEN 'SIM' ELSE 'NÃO' END ATIVA from Disciplina";
+  const [rows] = await pool.query(sql);
+  if (!rows.length) return res.status(204).json({ message: "Não foram encontrados resultados" });
+
+  return res.status(200).json({ Disciplina: rows });
+});
+
+/**
+ * @description Get Disciplinas 
+ * @route GET /disciplina/ativas
+ */
+export const getDisciplinasAtivas = tryCatchWrapper(async function (req, res, next) {
+  let sql = "SELECT DISCIPLINA,	NOME, 'SIM' ATIVA FROM Disciplina WHERE ATIVA = 'S'";
   const [rows] = await pool.query(sql);
   if (!rows.length) return res.status(204).json({ message: "Não foram encontrados resultados" });
 
@@ -25,7 +37,7 @@ export const getAllDisciplina = tryCatchWrapper(async function (req, res, next) 
 
 /**
  * @description Get Single Disciplina
- * @route GET /Disciplina/:id
+ * @route GET /disciplina/:id
  */
 export const getSingleDisciplina = tryCatchWrapper(async function (req, res, next) {
   const { id } = req.params;
