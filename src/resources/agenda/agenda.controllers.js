@@ -40,7 +40,8 @@ export const getAgendaProf = tryCatchWrapper(async function (req, res, next) {
 	  		Agenda A 
 	  		INNER JOIN Disciplina D ON D.DISCIPLINA = A.DISCIPLINA 
 	  WHERE 
-	  		A.DATA = :data AND A.NUM_FUNC = :prof 
+	  		-- A.DATA = :data AND A.NUM_FUNC = :prof 
+			  A.DATA = ? AND A.NUM_FUNC = ?
 	  ORDER BY 
 	  		A.HORA_INICIO
 	`;
