@@ -45,7 +45,7 @@ export const getAgendaProf = tryCatchWrapper(async function (req, res, next) {
 	  		A.HORA_INICIO
 	`;
   
-	const [rows] = await pool.query(sql, { data, prof });
+	const [rows] = await pool.query(sql, [ data, prof ]);
   
 	if (!rows.length) {
 	  return res.status(204).json({ message: "Não foram encontrados resultados" });
