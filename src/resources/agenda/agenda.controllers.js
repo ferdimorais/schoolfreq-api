@@ -15,7 +15,19 @@ async function getAgenda(id) {
 
 /**
  * @description Get All Agenda
- * @route GET /disciplina
+ * @route GET /Agenda
+ */
+export const getAllAgenda = tryCatchWrapper(async function (req, res, next) {
+	let sql = "SELECT * from Agenda LIMIT 10";
+	const [rows] = await pool.query(sql);
+	if (!rows.length) return res.status(204).json({ message: "Não foram encontrados resultados" });
+  
+	return res.status(200).json({ Agenda: rows });
+  });
+
+/**
+ * @description Get Agenda Prof
+ * @route GET /agenda/:data/:prof
  */
 export const getAgendaProf = tryCatchWrapper(async function (req, res, next) {
 	const { data, prof } = req.body; // ou req.params, dependendo de onde você está recebendo esses valores
@@ -44,7 +56,7 @@ export const getAgendaProf = tryCatchWrapper(async function (req, res, next) {
 
 /**
  * @description Get Single Agenda
- * @route GET /disciplina/:id
+ * @route GET /agenda/:id
  */
 export const getSingleAgenda = tryCatchWrapper(async function (req, res, next) {
 	const { id } = req.params;
