@@ -30,7 +30,7 @@ export const getAllAgenda = tryCatchWrapper(async function (req, res, next) {
  * @route GET /agenda/:data/:prof
  */
 export const getAgendaProf = tryCatchWrapper(async function (req, res, next) {
-	const { data, prof } = req.body; // ou req.params, dependendo de onde você está recebendo esses valores
+	const { data, prof } = req.params;
   
 	const sql = `
 	  SELECT 
