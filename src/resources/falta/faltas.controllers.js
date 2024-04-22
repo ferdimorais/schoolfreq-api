@@ -49,7 +49,7 @@ const { AGENDA_ID, ALUNO, USUARIO_ID } = req.body;
   let sql = "INSERT INTO Falta (AGENDA, ALUNO_ID, USUARIO_ID, DATA_CAD) VALUES (?, ?, ?, NOW() )";
   const result = await pool.query(sql, [AGENDA_ID, ALUNO, USUARIO_ID]);
 
-  return res.status(201).json({ message: "Falta inserida com sucesso", id: result.insertId });
+  return res.status(201).json({ message: "Falta inserida com sucesso!!", id: result.insertId });
 });
 
 /**
