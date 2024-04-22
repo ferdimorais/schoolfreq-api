@@ -46,10 +46,10 @@ const { AGENDA_ID, ALUNO, USUARIO_ID } = req.body;
   if ( !AGENDA_ID || !ALUNO  || !USUARIO_ID )
     return next(createCustomError("Todos os campos são necessários", 400));
 
-  let sql = "INSERT INTO Falta (AGENDA_ID, ALUNO, USUARIO_ID, DATA_CAD) VALUES (?, ?, ?, NOW() )";
+  let sql = "INSERT INTO Falta (AGENDA, ALUNO_ID, USUARIO_ID, DATA_CAD) VALUES (?, ?, ?, NOW() )";
   await pool.query(sql, [AGENDA_ID, ALUNO, USUARIO_ID]);
 
-  return res.status(201).json({ message: "Falta inserida com sucesso" });
+  return res.status(201).json({ message: "Falta inserida com sucesso", id: result.insertId });
 });
 
 /**
