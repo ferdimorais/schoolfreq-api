@@ -47,9 +47,12 @@ const { AGENDA_ID, ALUNO, USUARIO_ID } = req.body;
     return next(createCustomError("Todos os campos são necessários", 400));
 
   let sql = "INSERT INTO Falta (AGENDA, ALUNO_ID, USUARIO_ID, DATA_CAD) VALUES (?, ?, ?, NOW() )";
-  const result = await pool.query(sql, [AGENDA_ID, ALUNO, USUARIO_ID]);
+  await pool.query(sql, [AGENDA_ID, ALUNO, USUARIO_ID]);
 
-  return res.status(201).json({ message: "Falta inserida com sucesso!!", id: result.insertId });
+  let sql1 = "SELECT FALTA_ID FROM Falta WHERE AGENDA = ? AND ALUNO_ID = ?";
+  const [rows] = await pool.query(sql1, [AGENDA_ID, ALUNO]);
+
+  return res.status(200).json({ Falta: rows });
 });
 
 /**
